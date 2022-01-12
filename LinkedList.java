@@ -15,6 +15,27 @@ class LinkedList {
         }
     }
 
+    // inserting at particular position
+
+    public static LinkedList insertAt(LinkedList list, int n, int data) {
+        Node new_node = new Node(data);
+        Node previous = list.head;
+        int count = 1;
+        while (count < n - 1) {
+            previous = previous.next;
+            count++;
+        }
+        Node current = previous.next;
+        new_node.next = current;
+        previous.next = new_node;
+        return list;
+
+    }
+
+    {
+
+    }
+
     // Method to insert a new Node
     public static LinkedList insert(LinkedList list, int data) {
         Node new_n = new Node(data);
@@ -54,7 +75,7 @@ class LinkedList {
         list = insert(list, 6);
         list = insert(list, 7);
         list = insert(list, 8);
-
+        list = insertAt(list, 4, 13);
         printList(list);
     }
 }
