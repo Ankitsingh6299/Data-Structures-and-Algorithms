@@ -15,6 +15,23 @@ class LinkedList {
         }
     }
 
+    // Inserting at beginning
+    public static LinkedList insertAtStart(LinkedList list, int data) {
+        Node new_node = new Node(data);
+        new_node.next = list.head;
+        list.head = new_node;
+        return list;
+
+    }
+
+    // Deletion of first Node
+    public static LinkedList deleteFirst(LinkedList list) {
+        Node curr = list.head;
+        list.head = list.head.next;
+        curr.next = null;
+        return list;
+    }
+
     // inserting at particular position
 
     public static LinkedList insertAt(LinkedList list, int n, int data) {
@@ -72,10 +89,12 @@ class LinkedList {
         list = insert(list, 3);
         list = insert(list, 4);
         list = insert(list, 5);
+        list = insertAtStart(list, 0);
         list = insert(list, 6);
         list = insert(list, 7);
         list = insert(list, 8);
         list = insertAt(list, 4, 13);
+        list = deleteFirst(list);
         printList(list);
     }
 }
