@@ -32,6 +32,20 @@ class LinkedList {
         return list;
     }
 
+    // Deleting at particular position
+    public static LinkedList deleteAt(LinkedList list, int n) {
+        Node previous = list.head;
+        int count = 1;
+        while (count < n - 1) {
+            previous = previous.next;
+            count++;
+        }
+        Node current = previous.next;
+        previous.next = current.next;
+        current.next = null;
+        return list;
+
+    }
     // inserting at particular position
 
     public static LinkedList insertAt(LinkedList list, int n, int data) {
@@ -49,8 +63,16 @@ class LinkedList {
 
     }
 
-    {
-
+    // Deletion at Last
+    public static LinkedList deleteLast(LinkedList list) {
+        Node last = list.head;
+        Node previous = null;
+        while (last.next != null) {
+            previous = last;
+            last = last.next;
+        }
+        previous.next = null;
+        return list;
     }
 
     // Method to insert a new Node
@@ -89,12 +111,13 @@ class LinkedList {
         list = insert(list, 3);
         list = insert(list, 4);
         list = insert(list, 5);
-        list = insertAtStart(list, 0);
+        // list = insertAtStart(list, 0);
         list = insert(list, 6);
         list = insert(list, 7);
-        list = insert(list, 8);
-        list = insertAt(list, 4, 13);
-        list = deleteFirst(list);
+        // list = deleteAt(list, 5);
+        list = deleteLast(list);
+        // list = insertAt(list, 4, 13);
+        // list = deleteFirst(list);
         printList(list);
     }
 }
