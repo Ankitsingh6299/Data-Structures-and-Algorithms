@@ -31,6 +31,37 @@ class LinkedList {
         }
         return list;}
 
+    public static LinkedList deleteMiddle(LinkedList list)
+    {
+        Node slow_ptr = list.head;
+        Node fast_ptr = list.head;
+         
+            while (fast_ptr != null && fast_ptr.next != null)
+            {
+                fast_ptr = fast_ptr.next.next;
+                slow_ptr = slow_ptr.next;
+            
+            }
+            Node temp=list.head;
+            while(temp.next!=null)
+            {
+                if(temp.next==slow_ptr)
+                {
+                    temp.next=slow_ptr.next;
+                }
+                temp=temp.next;
+            }
+            return list;
+            
+    }
+
+    
+
+
+    
+
+    
+
     public static void printMiddle(LinkedList list)
         
     {
@@ -47,14 +78,14 @@ class LinkedList {
          
     }
 
-    public static void lengthOfLinkedList(LinkedList list) {
+    public static int lengthOfLinkedList(LinkedList list) {
         int count = 0;
         Node current1 = list.head;
         while (current1!= null) {
             current1=current1.next;
             count++;
         }
-        System.out.println(count);
+        return count;
     }
 
 
@@ -67,6 +98,8 @@ class LinkedList {
         }
         System.out.print(current.data);
     }
+
+ 
 
 
 
@@ -84,8 +117,10 @@ class LinkedList {
        
         printList(list);
         System.out.print("\n");
-       lengthOfLinkedList(list);
         printMiddle(list);
+        deleteMiddle(list);
+        printList(list);
+        
  
     }
 }
